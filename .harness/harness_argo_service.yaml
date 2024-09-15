@@ -3,7 +3,21 @@ service:
   identifier: harness_argo_service
   serviceDefinition:
     type: Kubernetes
-    spec: {}
+    spec:
+      manifests:
+        - manifest:
+            identifier: harnessargopoc
+            type: ReleaseRepo
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: githubconnector
+                  gitFetchType: Branch
+                  paths:
+                    - dev/helloworld-helm.yaml
+                  branch: main
+                  repoName: harness-argo-poc
   gitOpsEnabled: true
   orgIdentifier: IDP
   projectIdentifier: Hello_World
