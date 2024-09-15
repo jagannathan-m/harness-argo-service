@@ -18,6 +18,19 @@ service:
                     - dev/helloworld-helm.yaml
                   branch: main
                   repoName: harness-argo-poc
+        - manifest:
+            identifier: hello_world_helm
+            type: DeploymentRepo
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: githubconnector
+                  gitFetchType: Branch
+                  paths:
+                    - dev/helloworld-helm.yaml
+                  branch: main
+                  repoName: harness-argo-poc
   gitOpsEnabled: true
   orgIdentifier: IDP
   projectIdentifier: Hello_World
